@@ -24,3 +24,18 @@ pipeline. We generated 3 augmented versions for every original file using:
 - Pitch Shift: Altering the tone (-2 to +3 steps). 
 - Gaussian Noise: Injecting background noise to simulate real-world recording environments. 
 This expanded our dataset from 232 samples to 928 samples. 
+
+B. Sliding Window Segmentation 
+Spontaneous speech varies in length. We applied a sliding window approach to segment 
+audio into fixed 5-second chunks with a 20% overlap. This ensures the model receives 
+consistent input sizes and increases the total number of training instances to approximately 
+3,000 segments. 
+
+C. Feature Extraction: Wav2Vec2 
+Instead of using traditional features like MFCCs (Mel-frequency cepstral coefficients), we 
+utilized Wav2Vec2 (Facebook/Meta), a Transformer-based model pre-trained on 960 hours 
+of unlabeled speech. 
+- We passed the raw audio through the pre-trained Wav2Vec2 model.
+- We extracted the Hidden States from the last transformer layer. 
+- We applied Mean Pooling to condense the temporal information into a single fixed-size 
+vector (embedding) of size 768 for each audio segment. 
