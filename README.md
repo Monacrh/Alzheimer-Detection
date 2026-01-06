@@ -52,3 +52,23 @@ classifier with an RBF (Radial Basis Function) Kernel.
 To ensure the reliability of our results, we employed Stratified Group K-Fold 
 Cross-Validation (K=5). This ensures that all audio segments from the same speaker appear 
 only in the training set or the test set, never both (preventing data leakage).
+
+## 4. Evaluation and Results 
+To ensure the reliability of our results, we employed Stratified Group K-Fold 
+Cross-Validation (K=5). This ensures that all audio segments from the same speaker appear 
+only in the training set or the test set, never both (preventing data leakage). 
+Quantitative Results 
+Our hybrid model achieved the following performance metrics (averaged across 5 folds): 
+
+| Metric                | Value   |
+|-----------------------|---------|
+| Average Accuracy      | 75.13%  |
+| Precision (Weighted)  | 0.75    |
+| Recall (Weighted)     | 0.74    |
+| F1-Score (Weighted)   | 0.74    |
+
+- Baseline Comparison: Early analysis of the DementiaNet dataset by its creators 
+reported ~70% accuracy. Our method improves upon this baseline by ~5%. 
+- Class Balance: The Confusion Matrix indicates the model is not biased toward the 
+majority class. It detects Dementia cases with a recall of approx 0.85 (in the best fold), 
+which is crucial for a medical screening tool where false negatives are dangerous. 
