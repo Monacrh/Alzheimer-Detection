@@ -38,4 +38,17 @@ of unlabeled speech.
 - We passed the raw audio through the pre-trained Wav2Vec2 model.
 - We extracted the Hidden States from the last transformer layer. 
 - We applied Mean Pooling to condense the temporal information into a single fixed-size 
-vector (embedding) of size 768 for each audio segment. 
+vector (embedding) of size 768 for each audio segment.
+
+D. Classification: Support Vector Machine (SVM) 
+While Wav2Vec2 can include a classification head, fine-tuning the entire model is 
+computationally expensive and prone to overfitting on smaller datasets. We used the 
+extracted 768-dimensional embeddings as input for a Support Vector Machine (SVM) 
+classifier with an RBF (Radial Basis Function) Kernel. 
+- Regularization (C=3.0): Tuned to balance margin maximization and classification error.
+- Scaling: Standard Scaler was applied to normalize feature vectors.
+  
+## 4. Evaluation and Results 
+To ensure the reliability of our results, we employed Stratified Group K-Fold 
+Cross-Validation (K=5). This ensures that all audio segments from the same speaker appear 
+only in the training set or the test set, never both (preventing data leakage).
