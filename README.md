@@ -71,4 +71,16 @@ Our hybrid model achieved the following performance metrics (averaged across 5 f
 reported ~70% accuracy. Our method improves upon this baseline by ~5%. 
 - Class Balance: The Confusion Matrix indicates the model is not biased toward the 
 majority class. It detects Dementia cases with a recall of approx 0.85 (in the best fold), 
-which is crucial for a medical screening tool where false negatives are dangerous. 
+which is crucial for a medical screening tool where false negatives are dangerous.
+
+## 5. Conclusion and Future Work 
+This project demonstrates that Wav2Vec2 embeddings combined with SVM provide a 
+powerful method for detecting dementia from spontaneous speech, achieving 75% accuracy 
+on a challenging "in-the-wild" dataset. 
+Future Improvements: 
+- Multimodal Analysis: Combining acoustic features with text transcripts (NLP) to analyze 
+linguistic complexity (vocabulary richness). 
+- Edge Deployment: Distilling the model to run on mobile devices for accessible at-home 
+screening. 
+- Explainability: Analyzing which specific acoustic features (e.g., pauses vs. pitch) 
+contribute most to the model's decision to aid clinical interpretation.
